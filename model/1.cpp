@@ -3,5 +3,5 @@
 //
 
 int func1(int a) {
-    return 1;
+    return 2;
 }
