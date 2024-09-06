@@ -4,4 +4,4 @@ project(test)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(test main.cpp
-        1.cpp)
+        model/1.cpp)
