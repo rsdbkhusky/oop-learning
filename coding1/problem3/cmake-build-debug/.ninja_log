@@ -1,0 +1,11 @@
+# ninja log v6
+21	173	7512720632950524	CMakeFiles/problem3.dir/NumArray.cpp.obj	ca2b9c0550b98637
+40	176	7512720633139901	CMakeFiles/problem3.dir/NumArrayItem.cpp.obj	414e5a696c20c81f
+1	347	7512720632751216	CMakeFiles/problem3.dir/main.cpp.obj	7113d1a49d75c22a
+348	508	7512720636217997	problem3.exe	f5ffb6f86f6551bf
+3	353	7512720696358713	CMakeFiles/problem3.dir/main.cpp.obj	7113d1a49d75c22a
+354	529	7512720699858262	problem3.exe	f5ffb6f86f6551bf
+4	370	7512720798039980	CMakeFiles/problem3.dir/main.cpp.obj	7113d1a49d75c22a
+370	529	7512720801701557	problem3.exe	f5ffb6f86f6551bf
+3	347	7512720848920976	CMakeFiles/problem3.dir/main.cpp.obj	7113d1a49d75c22a
+347	518	7512720852364284	problem3.exe	f5ffb6f86f6551bf

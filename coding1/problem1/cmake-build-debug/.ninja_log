@@ -1,0 +1,21 @@
+# ninja log v6
+79	864	7509273765423594	CMakeFiles/coding1.dir/Operation.cpp.obj	e9854ae2563f32d3
+24	386	7509404354590613	CMakeFiles/coding1.dir/OperationHelp.cpp.obj	b03c3e281c016ab9
+4	289	7509389230682903	CMakeFiles/coding1.dir/OperationAdd.cpp.obj	dcec1124b42c7b39
+26	412	7509397241571298	CMakeFiles/coding1.dir/OperationConcat.cpp.obj	85b96770dcea9a73
+5	411	7509397241362486	CMakeFiles/coding1.dir/OperationRed.cpp.obj	214bcce9afe78283
+20	877	7509273764845534	CMakeFiles/coding1.dir/MyApp.cpp.obj	d7e03f492c5ce0a8
+58	874	7509273765224261	CMakeFiles/coding1.dir/CommandPara.cpp.obj	43e36f22cf7d6e5c
+39	877	7509273765034899	CMakeFiles/coding1.dir/CommandParser.cpp.obj	77e05d239b025ab5
+4	388	7509404354391277	CMakeFiles/coding1.dir/main.cpp.obj	141d856b7267ac74
+388	561	7509404358223677	coding1.exe	487685d1d96f0e39
+47	2294	7512656364707290	CMakeFiles/coding1.dir/MyApp.cpp.obj	504b9cfdc9112855
+167	2328	7512656365898569	CMakeFiles/coding1.dir/Operation.cpp.obj	3d669434d6225d5f
+15	2506	7512656364388363	CMakeFiles/coding1.dir/main.cpp.obj	a86fd8ebcca3bb2
+234	2831	7512656366576292	CMakeFiles/coding1.dir/OperationRed.cpp.obj	bda11ceadf043b42
+77	2882	7512656365006289	CMakeFiles/coding1.dir/CommandParser.cpp.obj	72a7ac550232a6d5
+203	2901	7512656366257364	CMakeFiles/coding1.dir/OperationAdd.cpp.obj	72e4ebca7a70fde2
+112	3035	7512656365360307	CMakeFiles/coding1.dir/CommandPara.cpp.obj	89ae7976bbaa2041
+322	3065	7512656367453362	CMakeFiles/coding1.dir/OperationConcat.cpp.obj	ccd1ee4e30027d8
+408	3190	7512656368315575	CMakeFiles/coding1.dir/OperationHelp.cpp.obj	87a8326694abca98
+3191	3750	7512656396136399	coding1.exe	487685d1d96f0e39
