@@ -15,6 +15,8 @@ public:
     void plusMonths(int nMonths);
     void plusDays(int nDays);
 private:
+    int numofDayInMonth() const;
+    int numofMonthInYear() const;
     int year;
     int month;
     int day;
