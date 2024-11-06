@@ -8,7 +8,8 @@
 class Container {
 public:
     Container(int defVal=10);
-    ///其它待补充
+    int& Item(int index);
+    const int& Item(int index) const;
 private:
     int items[3];
 };
