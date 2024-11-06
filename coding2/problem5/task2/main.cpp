@@ -18,3 +18,8 @@ int main() {
 
     return 0;
 }
+
+/*
+ * run> g++ -f PIC -shared ushort_to_float32.cpp -o libushort_to_float32.so
+ * run> g++ main.cpp -L. -lushort_to_float32 -o test_program
+ */

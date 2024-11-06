@@ -18,7 +18,7 @@ protected:
     int mA;
 };
 
-class B :public A {
+class B : virtual public A {
 public:
     B( int a, int b ) :A( a ), mB( b ) { }
     virtual void f( ) { cout << mB << endl; }
@@ -26,7 +26,7 @@ protected:
     int mB;
 };
 
-class C : public A {
+class C : virtual public A {
 public:
     C( int a, int c ) :A( a ), mC( c ) { }
     virtual void f( ) { cout << mC << endl; }
