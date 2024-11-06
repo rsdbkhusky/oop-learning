@@ -12,7 +12,6 @@ using std::endl;
 class A {
 public:
     A( int a ) :mA( a ) { }
-    A() {}
     virtual ~A( ) = default;
     virtual void f( ) { cout << mA << endl; }
 protected:
@@ -30,7 +29,6 @@ protected:
 class C : public A {
 public:
     C( int a, int c ) :A( a ), mC( c ) { }
-    C() {}
     virtual void f( ) { cout << mC << endl; }
 protected:
     int mC;
