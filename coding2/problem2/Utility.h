@@ -7,8 +7,8 @@
 
 class Utility {
 public:
-    static int countBits0(int num);
-    static int countBits1(int num);
+    static int countBits0(int x);
+    static int countBits1(int x);
 };
 
 #endif //PROBLEM2_UTILITY_H
