@@ -5,8 +5,8 @@ using std::endl;
 
 int main() {
     ExtString s1; 
-    ExtString s2("å‰æ—å¤§å­¦");
-    ExtString s3( "è®¡ç®—æœºå­¦é™¢" );
+    ExtString s2("¼ªÁÖ´óÑ§");
+    ExtString s3( "¼ÆËã»úÑ§Ôº" );
 
     cout << s1->size( ) << endl;
     cout << s2->size( ) << endl;
@@ -14,17 +14,17 @@ int main() {
 
     ExtString ss = s2.concat( s3, "-" );
     cout << ss->c_str() << endl;
-    s1 = "æˆ‘åœ¨";
+    s1 = "ÎÒÔÚ";
     cout << s1.append( s2 )->c_str( ) << endl;
 }
 
 /*
-æ‰©å±•å­—ç¬¦ä¸²
-ç°å¸Œæœ›å®šä¹‰ExtStringç±»ï¼Œè¯¥ç±»é™¤äº†å…·æœ‰STLä¸­stringç±»çš„åŠŸèƒ½å¤–ï¼Œéœ€æ–°å¢å­—ç¬¦ä¸²æ‹¼æ¥è¡Œä¸ºï¼š
+À©Õ¹×Ö·û´®
+ÏÖÏ£Íû¶¨ÒåExtStringÀà£¬¸ÃÀà³ıÁË¾ßÓĞSTLÖĞstringÀàµÄ¹¦ÄÜÍâ£¬ĞèĞÂÔö×Ö·û´®Æ´½ÓĞĞÎª£º
 ExtString concat( const ExtString & other, const ExtString & interval ="" ) const;
 ExtString & append( const ExtString & other );
-è¯·å®šä¹‰å¹¶å®ç°ExtStringç±»ã€‚å‚è€ƒçš„æµ‹è¯•ä»£ç å¯èƒ½å¦‚ä¸‹ï¼š
+Çë¶¨Òå²¢ÊµÏÖExtStringÀà¡£²Î¿¼µÄ²âÊÔ´úÂë¿ÉÄÜÈçÏÂ£º
 
-è¾“å‡º:
+Êä³ö:
 
 */
