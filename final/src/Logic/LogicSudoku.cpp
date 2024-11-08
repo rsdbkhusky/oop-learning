@@ -7,6 +7,7 @@
 #include <numeric>
 #include <random>
 #include <algorithm>
+#include <unordered_set>
 #include "../../include/Logic/LogicSudoku.h"
 #include "../../include/Logic/LogicRow.h"
 #include "../../include/Logic/LogicColumn.h"
@@ -18,6 +19,7 @@ using std::mt19937;
 using std::random_device;
 using std::shuffle;
 using std::uniform_int_distribution;
+using std::unordered_set;
 
 int LogicSudoku::getBlockIndex(int x, int y) const {
     int lenCell = getLenCell();
@@ -88,6 +90,55 @@ vector<vector<int>> LogicSudoku::genSudoku(int lenCell, double zeroRatio) {
     return nums;
 }
 
+bool LogicSudoku::checkSudoku(const vector<vector<int>>& _nums) {
+    int lenSudoku = (int)_nums.size();
+    if (lenSudoku <= 0) return true;
+    if ((int)sqrt(lenSudoku) * (int)sqrt(lenSudoku) != lenSudoku) return true;
+    for (int i = 0; i < lenSudoku; ++i) {
+        if (lenSudoku != (int)_nums[i].size()) return true;
+        for (int j = 0; j < lenSudoku; ++j) {
+            if (_nums[i][j] != 0 && (_nums[i][j] < 1 || _nums[i][j] > lenSudoku)) {
+                return true;
+            }
+        }
+    }
+    for (int i = 0; i < lenSudoku; ++i) {
+        unordered_set<int> rowSet, colSet;
+        for (int j = 0; j < lenSudoku; ++j) {
+            if (_nums[i][j] != 0) {
+                if (rowSet.find(_nums[i][j]) != rowSet.end()) {
+                    return true;
+                }
+                rowSet.insert(_nums[i][j]);
+            }
+            if (_nums[j][i] != 0) {
+                if (colSet.find(_nums[j][i]) != colSet.end()) {
+                    return true;
+                }
+                colSet.insert(_nums[j][i]);
+            }
+        }
+    }
+    int lenCell = (int)sqrt(lenSudoku);
+    for (int boxRow = 0; boxRow < lenCell; ++boxRow) {
+        for (int boxCol = 0; boxCol < lenCell; ++boxCol) {
+            unordered_set<int> boxSet;
+            for (int i = 0; i < lenCell; ++i) {
+                for (int j = 0; j < lenCell; ++j) {
+                    int num = _nums[boxRow * lenCell + i][boxCol * lenCell + j];
+                    if (num != 0) {
+                        if (boxSet.find(num) != boxSet.end()) {
+                            return true;
+                        }
+                        boxSet.insert(num);
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+
 LogicSudoku::LogicSudoku(const vector<vector<int>>& _nums) {
     int lenSudoku = (int)_nums.size();
     mCells.resize(lenSudoku);
@@ -138,12 +189,7 @@ LogicSudoku LogicSudoku::createLogicSudoku(int _lenCell, double _zeroRatio) {
 }
 
 LogicSudoku LogicSudoku::createLogicSudoku(const vector<vector<int>>& _nums) {
-    int lenSudoku = (int)_nums.size();
-    for (int i = 0; i < lenSudoku; ++i) {
-        assert(lenSudoku == (int)_nums[i].size());
-    }
-    assert(lenSudoku > 0);
-    assert(sqrt(lenSudoku) * sqrt(lenSudoku) == lenSudoku);
+    assert(LogicSudoku::checkSudoku(_nums) == 0);
     return LogicSudoku(_nums);
 }
 
@@ -162,7 +208,7 @@ LogicReturnValue LogicSudoku::setCellNum(int x, int y, int num) {
     return result;
 }
 
-LogicReturnValue LogicSudoku::removeCellCandidates(int x, int y, vector<int> nums) {
+LogicReturnValue LogicSudoku::removeCellCandidates(int x, int y, const vector<int>& nums) {
     return mCells[x - 1][y - 1]->removeCandidates(nums);
 }
 

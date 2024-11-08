@@ -21,12 +21,13 @@ public:
     ~LogicSudoku();
     int getLenCell() const;
     LogicReturnValue setCellNum(int x, int y, int num);
-    LogicReturnValue removeCellCandidates(int x, int y, vector<int> nums);
+    LogicReturnValue removeCellCandidates(int x, int y, const vector<int>& nums);
     LogicReturnValue resetCellCandidates(int x, int y);
 private:
     explicit LogicSudoku(const vector<vector<int>>& _nums);
     int getBlockIndex(int x, int y) const;
     static vector<vector<int>> genSudoku(int lenCell, double zeroRatio);
+    static bool checkSudoku(const vector<vector<int>>& _nums);
     vector<vector<LogicCell*>> mCells;
     vector<LogicRow*> mRows;
     vector<LogicColumn*> mColumns;
