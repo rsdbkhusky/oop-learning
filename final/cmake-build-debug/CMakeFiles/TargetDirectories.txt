@@ -1,3 +1,0 @@
-E:/CodingPractice/oop-learning/final/cmake-build-debug/CMakeFiles/final.dir
-E:/CodingPractice/oop-learning/final/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/CodingPractice/oop-learning/final/cmake-build-debug/CMakeFiles/rebuild_cache.dir
