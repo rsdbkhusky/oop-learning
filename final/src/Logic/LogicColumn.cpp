@@ -3,3 +3,5 @@
 //
 
 #include "../../include/Logic/LogicColumn.h"
+
+LogicColumn::LogicColumn(vector<LogicCell*>& _mCells): LogicGroup(_mCells) {}

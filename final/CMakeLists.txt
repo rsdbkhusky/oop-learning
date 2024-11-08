@@ -3,7 +3,7 @@ project(final)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(final main.cpp
+add_executable(final test1.cpp
         src/Logic/LogicCell.cpp
         include/Logic/LogicCell.h
         src/Logic/LogicRow.cpp

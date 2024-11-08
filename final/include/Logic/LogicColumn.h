@@ -8,7 +8,8 @@
 #include "LogicGroup.h"
 
 class LogicColumn: public LogicGroup {
-
+public:
+    explicit LogicColumn(vector<LogicCell*>& _mCells);
 };
 
 

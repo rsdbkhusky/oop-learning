@@ -10,7 +10,7 @@ using std::begin;
 using std::end;
 
 LogicCell::LogicCell(int _mNum) {
-    mStatus = LogicCellStatus::CONFIRMED;
+    mStatus = _mNum == 0 ? LogicCellStatus::PENDING : LogicCellStatus::CONFIRMED;
     mNum = _mNum;
 }
 

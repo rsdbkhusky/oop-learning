@@ -5,6 +5,8 @@
 #include <cassert>
 #include <cmath>
 #include <numeric>
+#include <random>
+#include <algorithm>
 #include "../../include/Logic/LogicSudoku.h"
 #include "../../include/Logic/LogicRow.h"
 #include "../../include/Logic/LogicColumn.h"
@@ -12,20 +14,137 @@
 #include "../../include/Logic/LogicCell.h"
 using std::sqrt;
 using std::iota;
+using std::mt19937;
+using std::random_device;
+using std::shuffle;
+using std::uniform_int_distribution;
 
 int LogicSudoku::getBlockIndex(int x, int y) const {
     int lenCell = getLenCell();
     return ((x - 1) / lenCell) * lenCell + ((y - 1) / lenCell) + 1;
 }
 
-LogicSudoku::LogicSudoku(int _lenCell) {
-    mCells.resize(_lenCell * _lenCell);
-    for (auto i: mCells) {
-        i.resize(_lenCell * _lenCell);
+vector<vector<int>> LogicSudoku::genSudoku(int lenCell, double zeroRatio) {
+    int size = lenCell * lenCell;
+    vector<vector<int>> nums = vector<vector<int>>(size, vector<int>(size, 0));
+    random_device rd;
+    mt19937 g(rd());
+    for (int i = 0; i < size; i += lenCell) {
+        vector<int> numbers(size);
+        iota(numbers.begin(), numbers.end(), 1);
+        shuffle(numbers.begin(), numbers.end(), g);
+        for (int r = 0; r < lenCell; ++r) {
+            for (int c = 0; c < lenCell; ++c) {
+                nums[i + r][i + c] = numbers[r * lenCell + c];
+            }
+        }
     }
-    mColumns.resize(_lenCell * _lenCell);
-    mRows.resize(_lenCell * _lenCell);
-    mBlocks.resize(_lenCell * _lenCell);
+    for (int row = 0; row < size; ++row) {
+        for (int col = 0; col < size; ++col) {
+            if (nums[row][col] == 0) {
+                vector<int> numbers(size);
+                iota(numbers.begin(), numbers.end(), 1);
+                shuffle(numbers.begin(), numbers.end(), g);
+                for (int num : numbers) {
+                    bool isSafe = true;
+                    for (int k = 0; k < size; ++k) {
+                        if (nums[row][k] == num || nums[k][col] == num) {
+                            isSafe = false;
+                            break;
+                        }
+                    }
+                    if (isSafe) {
+                        int startRow = row / lenCell * lenCell;
+                        int startCol = col / lenCell * lenCell;
+                        for (int r = 0; r < lenCell; ++r) {
+                            for (int c = 0; c < lenCell; ++c) {
+                                if (nums[startRow + r][startCol + c] == num) {
+                                    isSafe = false;
+                                    break;
+                                }
+                            }
+                            if (!isSafe) break;
+                        }
+                    }
+                    if (isSafe) {
+                        nums[row][col] = num;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    int totalCells = size * size;
+    int numRemove = (int)round(totalCells * zeroRatio);
+    uniform_int_distribution<> dist(0, size - 1);
+    while (numRemove > 0) {
+        int row = dist(g);
+        int col = dist(g);
+        if (nums[row][col] != 0) {
+            nums[row][col] = 0;
+            numRemove--;
+        }
+    }
+    return nums;
+}
+
+LogicSudoku::LogicSudoku(const vector<vector<int>>& _nums) {
+    int lenSudoku = (int)_nums.size();
+    mCells.resize(lenSudoku);
+    for (int i = 0; i < lenSudoku; ++i) {
+        mCells[i].resize(lenSudoku);
+    }
+    mColumns.resize(lenSudoku);
+    mRows.resize(lenSudoku);
+    mBlocks.resize(lenSudoku);
+    for (int i = 0; i < lenSudoku; ++i) {
+        for (int j = 0; j < lenSudoku; ++j) {
+            mCells[i][j] = new LogicCell(_nums[i][j]);
+        }
+    }
+    for (int i = 0; i < lenSudoku; ++i) {
+        mRows[i] = new LogicRow(mCells[i]);
+    }
+    for (int j = 0; j < lenSudoku; ++j) {
+        vector<LogicCell*> temp(lenSudoku);
+        for (int i = 0; i < lenSudoku; ++i) {
+            temp[i] = mCells[i][j];
+        }
+        mColumns[j] = new LogicColumn(temp);
+    }
+    for (int k = 0; k < lenSudoku; ++k) {
+        int lenCell = (int)sqrt(lenSudoku);
+        int x = (k / lenCell) * lenCell;
+        int y = (k % lenCell) * lenCell;
+        vector<LogicCell*> temp;
+        for (int i = 0; i < lenCell; ++i) {
+            for (int j = 0; j < lenCell; ++j) {
+                temp.push_back(mCells[x + i][y + j]);
+            }
+        }
+        mBlocks[k] = new LogicBlock(temp);
+    }
+    for (int i = 0; i < lenSudoku; ++i) {
+        for (int j = 0; j < lenSudoku; ++j) {
+            if (_nums[i][j] == 0) resetCellCandidates(i + 1, j + 1);
+        }
+    }
+}
+
+LogicSudoku LogicSudoku::createLogicSudoku(int _lenCell, double _zeroRatio) {
+    assert(_lenCell > 0);
+    assert(_zeroRatio >= 0 && _zeroRatio <= 1);
+    return LogicSudoku(genSudoku(_lenCell, _zeroRatio));
+}
+
+LogicSudoku LogicSudoku::createLogicSudoku(const vector<vector<int>>& _nums) {
+    int lenSudoku = (int)_nums.size();
+    for (int i = 0; i < lenSudoku; ++i) {
+        assert(lenSudoku == (int)_nums[i].size());
+    }
+    assert(lenSudoku > 0);
+    assert(sqrt(lenSudoku) * sqrt(lenSudoku) == lenSudoku);
+    return LogicSudoku(_nums);
 }
 
 LogicSudoku::~LogicSudoku() = default;

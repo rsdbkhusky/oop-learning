@@ -16,14 +16,17 @@ class LogicBlock;
 
 class LogicSudoku {
 public:
-    explicit LogicSudoku(int _lenCell);
+    static LogicSudoku createLogicSudoku(int _lenCell, double zeroRatio);
+    static LogicSudoku createLogicSudoku(const vector<vector<int>>& _nums);
     ~LogicSudoku();
     int getLenCell() const;
     LogicReturnValue setCellNum(int x, int y, int num);
     LogicReturnValue removeCellCandidates(int x, int y, vector<int> nums);
     LogicReturnValue resetCellCandidates(int x, int y);
 private:
+    explicit LogicSudoku(const vector<vector<int>>& _nums);
     int getBlockIndex(int x, int y) const;
+    static vector<vector<int>> genSudoku(int lenCell, double zeroRatio);
     vector<vector<LogicCell*>> mCells;
     vector<LogicRow*> mRows;
     vector<LogicColumn*> mColumns;

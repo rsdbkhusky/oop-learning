@@ -8,7 +8,8 @@
 #include "LogicGroup.h"
 
 class LogicRow: public LogicGroup {
-
+public:
+    explicit LogicRow(vector<LogicCell*>& _mCells);
 };
 
 

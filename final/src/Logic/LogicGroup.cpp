@@ -8,7 +8,7 @@
 using std::find;
 using std::end;
 
-LogicGroup::LogicGroup(vector<LogicCell*>& _mCells): mCells(_mCells) {}
+LogicGroup::LogicGroup(const vector<LogicCell*>& _mCells): mCells(_mCells) {}
 
 LogicGroup::~LogicGroup() = default;
 

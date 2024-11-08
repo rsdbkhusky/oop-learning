@@ -11,7 +11,7 @@ class LogicCell;
 
 class LogicGroup {
 public:
-    explicit LogicGroup(vector<LogicCell*>& _mCells);
+    explicit LogicGroup(const vector<LogicCell*>& _mCells);
     virtual ~LogicGroup();
     int getSize() const;
     virtual void updateOneCandidatesByAllNums(vector<int>& candidates) const;
