@@ -8,14 +8,9 @@ public:
     ~D() { delete mpC; }
     D(const D& rhs): B(rhs), mpC(new C(*rhs.mpC)), mD(rhs.mD) {}
     D& operator=(const D& rhs) {
-//        D temp(rhs); // 方案0
-//        swap(*this, temp);
-//        return *this;
         B::operator=(rhs);
-        C* temp = new C(*rhs.mpC); // 方案1
-        swap(mpC, temp);
-//        D temp(rhs); // 方案2
-//        swap(mpC, temp.mpC);
+        D temp(rhs);
+        swap(mpC, temp.mpC);
         mD = rhs.mD;
         return *this;
     }
