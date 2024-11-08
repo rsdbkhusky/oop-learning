@@ -54,11 +54,14 @@ add_executable(final test1.cpp
         include/Data/DataSaver.h
         src/Data/DataGetter.cpp
         include/Data/DataGetter.h
-        src/Data/DataMaker.cpp
-        include/Data/DataMaker.h
+        src/Data/DataLoaderSudoku.cpp
+        include/Data/DataLoaderSudoku.h
         src/Data/DataLoader.cpp
         include/Data/DataLoader.h
         include/Input/InputProcessor.h
         include/Output/OutputProcessor.h
         src/Logic/LogicGroup.cpp
-        include/Logic/LogicGroup.h)
+        include/Logic/LogicGroup.h
+        src/Utils/Singleton.cpp
+        include/Utils/Singleton.h
+        test2.cpp)

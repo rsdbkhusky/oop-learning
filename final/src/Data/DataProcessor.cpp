@@ -3,3 +3,5 @@
 //
 
 #include "../../include/Data/DataProcessor.h"
+
+string DataProcessor::sFilePath = "puzzles.dat";
