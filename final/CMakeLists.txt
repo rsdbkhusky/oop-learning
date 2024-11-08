@@ -13,4 +13,8 @@ add_executable(final main.cpp
         src/Block.cpp
         include/Block.h
         src/Sudoku.cpp
-        include/Sudoku.h)
+        include/Sudoku.h
+        src/Application.cpp
+        include/Application.h
+        src/Scene.cpp
+        include/Scene.h)
