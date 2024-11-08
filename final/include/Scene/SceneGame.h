@@ -7,11 +7,11 @@
 
 #include "Scene.h"
 
-class Sudoku;
+class LogicSudoku;
 
 class SceneGame: public Scene {
 private:
-    Sudoku* mSudoku;
+    LogicSudoku* mSudoku;
 };
 
 

@@ -4,16 +4,16 @@ project(final)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(final main.cpp
-        src/Logic/Cell.cpp
-        include/Logic/Cell.h
-        src/Logic/Row.cpp
-        include/Logic/Row.h
-        src/Logic/Column.cpp
-        include/Logic/Column.h
-        src/Logic/Block.cpp
-        include/Logic/Block.h
-        src/Logic/Sudoku.cpp
-        include/Logic/Sudoku.h
+        src/Logic/LogicCell.cpp
+        include/Logic/LogicCell.h
+        src/Logic/LogicRow.cpp
+        include/Logic/LogicRow.h
+        src/Logic/LogicColumn.cpp
+        include/Logic/LogicColumn.h
+        src/Logic/LogicBlock.cpp
+        include/Logic/LogicBlock.h
+        src/Logic/LogicSudoku.cpp
+        include/Logic/LogicSudoku.h
         src/Application.cpp
         include/Application.h
         src/Scene/Scene.cpp
@@ -59,4 +59,6 @@ add_executable(final main.cpp
         src/Data/DataLoader.cpp
         include/Data/DataLoader.h
         include/Input/InputProcessor.h
-        include/Output/OutputProcessor.h)
+        include/Output/OutputProcessor.h
+        src/Logic/LogicGroup.cpp
+        include/Logic/LogicGroup.h)
