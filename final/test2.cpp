@@ -3,13 +3,13 @@
 ////
 //
 //#include <iostream>
-//#include "include/Data/DataLoaderSudoku.h"
+//#include "include/Data/DataManagerSudoku.h"
 //using std::cout;
 //using std::endl;
 //
 //int main() {
-//    DataLoaderSudoku& dls = DataLoaderSudoku::Singleton<DataLoaderSudoku>::getInstance();
-//    dls.loadData();
+//    DataManagerSudoku& dls = DataManagerSudoku::Singleton<DataManagerSudoku>::getInstance();
+//    dls.loadFile();
 //    for (int i = 1; i <= dls.getCntLine(); ++i) {
 //        auto a = dls.getSudoku(i);
 //    }

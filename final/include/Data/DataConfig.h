@@ -2,17 +2,17 @@
 // Created by lenovo on 2024/11/7.
 //
 
-#ifndef FINAL_DATAPROCESSOR_H
-#define FINAL_DATAPROCESSOR_H
+#ifndef FINAL_DATACONFIG_H
+#define FINAL_DATACONFIG_H
 
 #include <string>
 using std::string;
 
-class DataProcessor {
+class DataConfig {
 protected:
     static string sFolderPath;
     static string sExtension;
 };
 
 
-#endif //FINAL_DATAPROCESSOR_H
+#endif //FINAL_DATACONFIG_H

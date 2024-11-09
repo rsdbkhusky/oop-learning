@@ -1,21 +1,21 @@
+////
+//// Created by lenovo on 2024/11/9.
+////
 //
-// Created by lenovo on 2024/11/9.
+//#include <iostream>
+//#include "include/Data/DataManagerSudoku.h"
+//using std::cout;
+//using std::endl;
 //
-
-#include <iostream>
-#include "include/Data/DataLoaderSudoku.h"
-using std::cout;
-using std::endl;
-
-int main() {
-    DataLoaderSudoku& dls = DataLoaderSudoku::Singleton<DataLoaderSudoku>::getInstance();
-    dls.loadFileList();
-//    for (auto i: dls.mFileList) {
-//        cout << '#' << *i << '@' << endl;
+//int main() {
+//    DataManagerSudoku& dls = DataManagerSudoku::Singleton<DataManagerSudoku>::getInstance();
+//    dls.loadFileList();
+////    for (auto i: dls.mFileList) {
+////        cout << '#' << *i << '@' << endl;
+////    }
+//    for (int i = 1; i <= dls.getCntFile(); ++i) {
+//        dls.loadFile(i);
+//        auto a = dls.getSudoku();
 //    }
-    for (int i = 1; i <= dls.getCntFile(); ++i) {
-        dls.loadData(i);
-        auto a = dls.getSudoku();
-    }
-    return 0;
-}
+//    return 0;
+//}

@@ -48,20 +48,17 @@ add_executable(final test1.cpp
         include/Scene/SceneSettingFromMainMenu.h
         src/Scene/SceneSettingFromGame.cpp
         include/Scene/SceneSettingFromGame.h
-        src/Data/DataProcessor.cpp
-        include/Data/DataProcessor.h
-        src/Data/DataSaver.cpp
-        include/Data/DataSaver.h
-        src/Data/DataSaverSudoku.cpp
-        include/Data/DataSaverSudoku.h
-        src/Data/DataLoaderSudoku.cpp
-        include/Data/DataLoaderSudoku.h
-        src/Data/DataLoader.cpp
-        include/Data/DataLoader.h
+        src/Data/DataConfig.cpp
+        include/Data/DataConfig.h
+        src/Data/DataManagerSudoku.cpp
+        include/Data/DataManagerSudoku.h
+        src/Data/DataManager.cpp
+        include/Data/DataManager.h
         include/Input/InputProcessor.h
         include/Output/OutputProcessor.h
         src/Logic/LogicGroup.cpp
         include/Logic/LogicGroup.h
         include/Utils/Singleton.h
         test2.cpp
-        test3.cpp)
+        test3.cpp
+        test4.cpp)
