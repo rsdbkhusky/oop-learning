@@ -8,7 +8,8 @@
 using std::sqrt;
 
 vector<vector<int>> DataLoaderSudoku::getSodoku(int index) const {
-    int lenData = (int)mData[index - 1]->size();
+    string& data = *mData[index - 1];
+    int lenData = (int)data.size();
     int lenSudoku = (int)sqrt(lenData);
     assert(lenSudoku * lenSudoku == lenData);
     vector<vector<int>> nums;
@@ -18,7 +19,7 @@ vector<vector<int>> DataLoaderSudoku::getSodoku(int index) const {
     }
     for (int i = 0; i < lenSudoku; ++i) {
         for (int j = 0; j < lenSudoku; ++j) {
-            nums[i][j] = int((*mData[index])[i * lenSudoku + j] - '0');
+            nums[i][j] = int(data[i * lenSudoku + j] - '0');
         }
     }
     return nums;

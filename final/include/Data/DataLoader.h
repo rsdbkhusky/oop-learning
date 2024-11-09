@@ -10,12 +10,14 @@
 #include "DataProcessor.h"
 using std::vector;
 
-class DataLoader: public Singleton, public DataProcessor {
+class DataLoader: public Singleton<DataLoader>, public DataProcessor {
+    friend class Singleton<DataLoader>;
 public:
     void loadData();
     int getCntData() const;
-protected:
+//protected:
     DataLoader() = default;
+    virtual ~DataLoader() override = default;
     vector<string*> mData;
 };
 

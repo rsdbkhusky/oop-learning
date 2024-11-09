@@ -62,6 +62,5 @@ add_executable(final test1.cpp
         include/Output/OutputProcessor.h
         src/Logic/LogicGroup.cpp
         include/Logic/LogicGroup.h
-        src/Utils/Singleton.cpp
         include/Utils/Singleton.h
         test2.cpp)

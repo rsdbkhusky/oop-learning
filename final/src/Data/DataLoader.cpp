@@ -7,8 +7,7 @@
 using std::ifstream;
 
 void DataLoader::loadData() {
-    string filename = sFilePath;
-    ifstream file(filename);
+    ifstream file(sFilePath);
     mData.clear();
     if (file.is_open()) {
         int n;

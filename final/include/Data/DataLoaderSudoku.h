@@ -7,9 +7,13 @@
 
 #include "DataLoader.h"
 
-class DataLoaderSudoku: public DataLoader {
+class DataLoaderSudoku: public Singleton<DataLoaderSudoku>, public DataLoader {
+    friend class Singleton<DataLoaderSudoku>;
 public:
     vector<vector<int>> getSodoku(int index) const;
+protected:
+    DataLoaderSudoku() = default;
+    virtual ~DataLoaderSudoku() override = default;
 };
 
 

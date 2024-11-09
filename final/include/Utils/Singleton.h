@@ -5,17 +5,18 @@
 #ifndef FINAL_SINGLETON_H
 #define FINAL_SINGLETON_H
 
+template <typename T>
 class Singleton {
 public:
-    static Singleton& getInstance();
-    static void destroyInstance();
+    static T& getInstance() {
+        static T instance;
+        return instance;
+    }
     Singleton(const Singleton&) = delete;
     Singleton& operator=(const Singleton&) = delete;
 protected:
     Singleton() = default;
     virtual ~Singleton() = default;
-private:
-    static Singleton* sInstance;
 };
 
 #endif //FINAL_SINGLETON_H
