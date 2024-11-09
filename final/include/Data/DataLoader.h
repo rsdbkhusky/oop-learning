@@ -15,7 +15,7 @@ class DataLoader: public Singleton<DataLoader>, public DataProcessor {
 public:
     void loadData();
     int getCntData() const;
-//protected:
+protected:
     DataLoader() = default;
     virtual ~DataLoader() override = default;
     vector<string*> mData;
