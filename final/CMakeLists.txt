@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.29)
 project(final)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 add_executable(final test1.cpp
         src/Logic/LogicCell.cpp
@@ -52,8 +52,8 @@ add_executable(final test1.cpp
         include/Data/DataProcessor.h
         src/Data/DataSaver.cpp
         include/Data/DataSaver.h
-        src/Data/DataGetter.cpp
-        include/Data/DataGetter.h
+        src/Data/DataSaverSudoku.cpp
+        include/Data/DataSaverSudoku.h
         src/Data/DataLoaderSudoku.cpp
         include/Data/DataLoaderSudoku.h
         src/Data/DataLoader.cpp
@@ -63,4 +63,5 @@ add_executable(final test1.cpp
         src/Logic/LogicGroup.cpp
         include/Logic/LogicGroup.h
         include/Utils/Singleton.h
-        test2.cpp)
+        test2.cpp
+        test3.cpp)

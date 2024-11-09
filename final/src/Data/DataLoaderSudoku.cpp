@@ -7,8 +7,9 @@
 #include "../../include/Data/DataLoaderSudoku.h"
 using std::sqrt;
 
-vector<vector<int>> DataLoaderSudoku::getSodoku(int index) const {
-    string& data = *mData[index - 1];
+vector<vector<int>> DataLoaderSudoku::getSudoku() const {
+    assert(getCntLine() == 2);
+    string& data = *mLines[1];
     int lenData = (int)data.size();
     int lenSudoku = (int)sqrt(lenData);
     assert(lenSudoku * lenSudoku == lenData);

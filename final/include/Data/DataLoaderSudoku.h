@@ -10,7 +10,7 @@
 class DataLoaderSudoku: public Singleton<DataLoaderSudoku>, public DataLoader {
     friend class Singleton<DataLoaderSudoku>;
 public:
-    vector<vector<int>> getSodoku(int index) const;
+    vector<vector<int>> getSudoku() const;
 protected:
     DataLoaderSudoku() = default;
     virtual ~DataLoaderSudoku() override = default;

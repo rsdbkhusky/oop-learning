@@ -4,4 +4,5 @@
 
 #include "../../include/Data/DataProcessor.h"
 
-string DataProcessor::sFilePath = "../example/puzzles.dat";
+string DataProcessor::sFolderPath = "../example/data/";
+string DataProcessor::sExtension = ".dat";

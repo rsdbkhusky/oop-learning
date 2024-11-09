@@ -10,7 +10,8 @@ using std::string;
 
 class DataProcessor {
 protected:
-    static string sFilePath;
+    static string sFolderPath;
+    static string sExtension;
 };
 
 

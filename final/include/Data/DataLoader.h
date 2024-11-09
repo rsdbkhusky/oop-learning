@@ -13,12 +13,15 @@ using std::vector;
 class DataLoader: public Singleton<DataLoader>, public DataProcessor {
     friend class Singleton<DataLoader>;
 public:
-    void loadData();
-    int getCntData() const;
+    void loadFileList();
+    int getCntFile() const;
+    void loadData(int index);
+    int getCntLine() const;
 protected:
     DataLoader() = default;
     virtual ~DataLoader() override = default;
-    vector<string*> mData;
+    vector<string*> mFileList;
+    vector<string*> mLines;
 };
 
 
