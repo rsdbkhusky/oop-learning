@@ -61,4 +61,5 @@ add_executable(final test1.cpp
         include/Utils/Singleton.h
         test2.cpp
         test3.cpp
-        test4.cpp)
+        test4.cpp
+        test5.cpp)

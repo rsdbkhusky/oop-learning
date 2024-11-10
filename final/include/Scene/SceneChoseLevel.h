@@ -8,7 +8,11 @@
 #include "Scene.h"
 
 class SceneChoseLevel: public Scene {
-
+public:
+    SceneChoseLevel(Application* _mApplication, InputReceiver* _mInputReceiver, OutputDisplayer* _mOutputDisplayer):
+    Scene(_mApplication, _mInputReceiver, _mOutputDisplayer) {
+        // TODO: add mUIs
+    }
 };
 
 

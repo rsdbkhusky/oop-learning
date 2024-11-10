@@ -5,9 +5,13 @@
 #ifndef FINAL_OUTPUTDISPLAYER_H
 #define FINAL_OUTPUTDISPLAYER_H
 
+#include "../Utils/Singleton.h"
 
-class OutputDisplayer {
-
+class OutputDisplayer: public Singleton<OutputDisplayer> {
+    friend class Singleton<OutputDisplayer>;
+protected:
+    OutputDisplayer() = default;
+    virtual ~OutputDisplayer() override = default;
 };
 
 

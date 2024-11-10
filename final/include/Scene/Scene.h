@@ -5,19 +5,30 @@
 #ifndef FINAL_SCENE_H
 #define FINAL_SCENE_H
 
-#include <vector>
-using std::vector;
+#include <map>
+#include <string>
+using std::map;
+using std::string;
 class Application;
 class InputReceiver;
 class OutputDisplayer;
 class UI;
+class InputMessage;
 
 class Scene {
-private:
-    Application *mApplication;
-    InputReceiver* mInputReveiver;
+public:
+    Scene(Application* _mApplication, InputReceiver* _mInputReceiver, OutputDisplayer* _mOutputDisplayer);
+    virtual ~Scene() = default;
+    void Update();
+protected:
+    static int durationOneUpdateInput;
+    void solveOneUpdateInput();
+    void solveOneInput(const string& input);
+    void solveInputMessage(const InputMessage& inputMessage);
+    Application* mApplication;
+    InputReceiver* mInputReceiver;
     OutputDisplayer* mOutputDisplayer;
-    vector<UI*> mUIs;
+    map<string, UI*> mUIs;
 };
 
 #endif //FINAL_SCENE_H
