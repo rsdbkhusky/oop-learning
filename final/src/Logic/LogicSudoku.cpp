@@ -182,15 +182,15 @@ LogicSudoku::LogicSudoku(const vector<vector<int>>& _nums) {
     }
 }
 
-LogicSudoku LogicSudoku::createLogicSudoku(int _lenCell, double _zeroRatio) {
+LogicSudoku* LogicSudoku::createLogicSudoku(int _lenCell, double _zeroRatio) {
     assert(_lenCell > 0);
     assert(_zeroRatio >= 0 && _zeroRatio <= 1);
-    return LogicSudoku(genSudoku(_lenCell, _zeroRatio));
+    return new LogicSudoku(genSudoku(_lenCell, _zeroRatio));
 }
 
-LogicSudoku LogicSudoku::createLogicSudoku(const vector<vector<int>>& _nums) {
+LogicSudoku* LogicSudoku::createLogicSudoku(const vector<vector<int>>& _nums) {
     assert(LogicSudoku::checkSudoku(_nums) == 0);
-    return LogicSudoku(_nums);
+    return new LogicSudoku(_nums);
 }
 
 LogicSudoku::~LogicSudoku() = default;

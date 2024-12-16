@@ -3,3 +3,9 @@
 //
 
 #include "../../include/UI/UIButton.h"
+
+UIButton::UIButton(const string& _mText): mText(_mText) {}
+
+const string& UIButton::getText() const {
+    return mText;
+}

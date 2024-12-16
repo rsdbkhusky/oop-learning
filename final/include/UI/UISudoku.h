@@ -6,9 +6,14 @@
 #define FINAL_UISUDOKU_H
 
 #include "UI.h"
+#include "../Logic/LogicSudoku.h"
 
 class UISudoku: public UI {
-
+public:
+    UISudoku(LogicSudoku* _pLogicSudoku);
+    const LogicSudoku& getLogicSudoku() const;
+protected:
+    LogicSudoku* pLogicSudoku;
 };
 
 

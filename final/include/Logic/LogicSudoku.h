@@ -16,8 +16,8 @@ class LogicBlock;
 
 class LogicSudoku {
 public:
-    static LogicSudoku createLogicSudoku(int _lenCell, double zeroRatio);
-    static LogicSudoku createLogicSudoku(const vector<vector<int>>& _nums);
+    static LogicSudoku* createLogicSudoku(int _lenCell, double zeroRatio);
+    static LogicSudoku* createLogicSudoku(const vector<vector<int>>& _nums);
     ~LogicSudoku();
     int getLenCell() const;
     LogicReturnValue setCellNum(int x, int y, int num);

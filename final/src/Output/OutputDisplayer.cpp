@@ -3,3 +3,5 @@
 //
 
 #include "../../include/Output/OutputDisplayer.h"
+
+void OutputDisplayer::displayAllUI(IUI& iui) {}

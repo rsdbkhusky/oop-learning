@@ -28,8 +28,6 @@ add_executable(final test1.cpp
         include/Output/OutputDisplayer.h
         src/Output/OutputDisplayerConsole.cpp
         include/Output/OutputDisplayerConsole.h
-        src/Output/OutputContent.cpp
-        include/Output/OutputContent.h
         src/UI/UI.cpp
         include/UI/UI.h
         src/UI/UIButton.cpp
@@ -62,4 +60,14 @@ add_executable(final test1.cpp
         test2.cpp
         test3.cpp
         test4.cpp
-        test5.cpp)
+        test5.cpp
+        src/UI/UContainer.cpp
+        include/UI/UContainer.h
+        src/UI/IUI.cpp
+        include/UI/IUI.h
+        src/UI/UContainerVertical.cpp
+        include/UI/UContainerVertical.h
+        src/UI/UContainerHorizontal.cpp
+        include/UI/UContainerHorizontal.h
+        test6.cpp
+)

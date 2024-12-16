@@ -7,8 +7,13 @@
 
 #include "OutputDisplayer.h"
 
-class OutputDisplayerConsole: public OutputDisplayer {
-
+class OutputDisplayerConsole: public Singleton<OutputDisplayerConsole>, public OutputDisplayer {
+    friend class Singleton<OutputDisplayerConsole>;
+public:
+    virtual void displayAllUI(IUI &iui) override;
+protected:
+    OutputDisplayerConsole() = default;
+    virtual ~OutputDisplayerConsole() override = default;
 };
 
 

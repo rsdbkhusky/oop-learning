@@ -5,8 +5,9 @@
 #ifndef FINAL_UI_H
 #define FINAL_UI_H
 
+#include "IUI.h"
 
-class UI {
+class UI: public IUI {
 
 };
 

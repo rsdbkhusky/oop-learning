@@ -5,10 +5,16 @@
 #ifndef FINAL_UIBUTTON_H
 #define FINAL_UIBUTTON_H
 
+#include <string>
 #include "UI.h"
+using std::string;
 
 class UIButton: public UI {
-
+public:
+    UIButton(const string& _mText);
+    const string& getText() const;
+protected:
+    string mText;
 };
 
 

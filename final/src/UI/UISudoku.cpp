@@ -3,3 +3,9 @@
 //
 
 #include "../../include/UI/UISudoku.h"
+
+UISudoku::UISudoku(LogicSudoku* _pLogicSudoku): pLogicSudoku(_pLogicSudoku) {}
+
+const LogicSudoku& UISudoku::getLogicSudoku() const {
+    return *pLogicSudoku;
+}
