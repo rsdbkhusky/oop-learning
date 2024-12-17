@@ -15,7 +15,7 @@ class InputErrorHandler: public Singleton<InputErrorHandler> {
 public:
     void setMessage(const string& message);
     void resetMessage();
-    IUI* handleDisplayUIRoot(const IUI* displayUIRoot);
+    IUI* handleDisplayUIRoot(IUI* displayUIRoot);
 protected:
     InputErrorHandler() = default;
     virtual ~InputErrorHandler() override = default;

@@ -19,21 +19,29 @@ class InputMessage;
 
 class Scene {
 public:
-    Scene(Application* _mApplication, InputReceiver* _mInputReceiver, InputErrorHandler* _mInputErrorHandler, OutputDisplayer* _mOutputDisplayer);
-    virtual ~Scene() = default;
-    void Update();
+//    Scene(Application* _mApplication, InputReceiver* _mInputReceiver, InputErrorHandler* _mInputErrorHandler, OutputDisplayer* _mOutputDisplayer);
+    Scene(Application* _mpApplication, bool _mReDisplay = 1);
+    void setUIs(const map<string, UI*>& _mUIs);
+    void setUIRoot(IUI* _mpUIRoot);
+    Scene(Application* _mpApplication, const map<string, UI*>& _mUIs, IUI* _mpUIRoot, bool _mReDisplay = 1);
+    virtual ~Scene();
+    Application& getApplication();
+    void setReDisplay(bool reDisplay);
+    void autoUpdate();
 protected:
     static int durationOneUpdateInput;
     static string messageInputCantReceive;
+    static void dfsDelete(IUI* cur);
     void solveOneUpdateInput();
     void solveOneInput(const string& input);
     void solveInputMessage(const InputMessage& inputMessage);
-    Application* mApplication;
-    InputReceiver* mInputReceiver;
-    InputErrorHandler* mInputErrorHandler;
-    OutputDisplayer* mOutputDisplayer;
+    virtual void customUpdate();
+    Application* mpApplication;
+//    InputReceiver* mInputReceiver;
+//    InputErrorHandler* mInputErrorHandler;
+//    OutputDisplayer* mOutputDisplayer; // 这三行预计要删掉
     map<string, UI*> mUIs;
-    IUI* mDisplayUIRoot;
+    IUI* mpUIRoot;
     bool mReDisplay;
 };
 

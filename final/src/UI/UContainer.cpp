@@ -5,3 +5,11 @@
 #include "../../include/UI/UContainer.h"
 
 UContainer::UContainer(IUI* _mpFather): IUI(_mpFather) {}
+
+IUI** UContainer::begin() {
+    return nullptr;
+}
+
+IUI** UContainer::end() {
+    return nullptr;
+}

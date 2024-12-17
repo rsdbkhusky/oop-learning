@@ -11,7 +11,7 @@ using std::string;
 
 class UIText: public UI {
 public:
-    UIText(const string& _mText);
+    UIText(const string& _mText, Scene* _mpScene = nullptr, IUI* _mpFather = nullptr);
     const string& getText() const;
 protected:
     string mText;

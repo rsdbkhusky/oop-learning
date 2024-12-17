@@ -10,10 +10,12 @@ class LogicSudoku;
 
 class UISudoku: public UI {
 public:
-    UISudoku(LogicSudoku* _pLogicSudoku);
+    UISudoku(LogicSudoku* _pLogicSudoku, Scene* _mpScene = nullptr, IUI* _mpFather = nullptr);
     const LogicSudoku& getLogicSudoku() const;
+    virtual void receive(const InputMessage &inputMessage) override;
 protected:
-    LogicSudoku* pLogicSudoku;
+    LogicSudoku* mpLogicSudoku;
+    LogicSudoku* mpReplayLogicSudoku;
 };
 
 

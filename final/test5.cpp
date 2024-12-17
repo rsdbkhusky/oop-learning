@@ -8,5 +8,5 @@
 //
 //int main() {
 //    Scene s(nullptr, &InputReceiverConsole::Singleton<InputReceiverConsole>::getInstance(), nullptr);
-//    s.Update();
+//    s.autoUpdate();
 //}

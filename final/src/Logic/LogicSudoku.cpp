@@ -193,6 +193,27 @@ LogicSudoku* LogicSudoku::createLogicSudoku(const vector<vector<int>>& _nums) {
     return new LogicSudoku(_nums);
 }
 
+LogicSudoku::LogicSudoku(const LogicSudoku& rhs) {
+    mCells = rhs.mCells;
+    mRows = rhs.mRows;
+    mColumns = rhs.mColumns;
+    mBlocks = rhs.mBlocks;
+    for (int i = 0; i < mCells.size(); ++i) {
+        for (int j = 0; j < mCells[i].size(); ++j) {
+            mCells[i][j] = new LogicCell(*rhs.mCells[i][j]);
+        }
+    }
+    for (int i = 0; i < mRows.size(); ++i) {
+        mRows[i] = new LogicRow(*rhs.mRows[i]);
+    }
+    for (int i = 0; i < mColumns.size(); ++i) {
+        mColumns[i] = new LogicColumn(*rhs.mColumns[i]);
+    }
+    for (int i = 0; i < mBlocks.size(); ++i) {
+        mBlocks[i] = new LogicBlock(*rhs.mBlocks[i]);
+    }
+}
+
 LogicSudoku::~LogicSudoku() = default;
 
 int LogicSudoku::getLenCell() const {
@@ -201,6 +222,21 @@ int LogicSudoku::getLenCell() const {
 
 const vector<vector<LogicCell*>>& LogicSudoku::getCells() const {
     return mCells;
+}
+
+vector<vector<int>> LogicSudoku::getCells2VVI() const {
+    const vector<vector<LogicCell*>>& cells = getCells();
+    vector<vector<int>> vvi;
+    vvi.resize(cells.size());
+    for (auto& vi: vvi) {
+        vi.resize(cells[0].size());
+    }
+    for (int i = 0; i < cells.size(); ++i) {
+        for (int j = 0; j < cells[i].size(); ++j) {
+            vvi[i][j] = cells[i][j]->getStatus() == LogicCellStatus::CONFIRMED ? cells[i][j]->getNum() : 0;
+        }
+    }
+    return vvi;
 }
 
 LogicReturnValue LogicSudoku::setCellNum(int x, int y, int num) {

@@ -10,6 +10,13 @@ using std::end;
 
 LogicGroup::LogicGroup(const vector<LogicCell*>& _mCells): mCells(_mCells) {}
 
+LogicGroup::LogicGroup(const LogicGroup& rhs) {
+    mCells = rhs.mCells;
+    for (int i = 0; i < mCells.size(); ++i) {
+        mCells[i] = rhs.mCells[i];
+    }
+}
+
 LogicGroup::~LogicGroup() = default;
 
 int LogicGroup::getSize() const {

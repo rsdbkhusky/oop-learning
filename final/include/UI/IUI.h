@@ -10,6 +10,8 @@ class IUI {
 public:
     IUI(IUI* _mpFather = nullptr);
     virtual ~IUI() = default;
+    void setFather(IUI* iui);
+    IUI* getFather();
 protected:
     IUI* mpFather;
 };

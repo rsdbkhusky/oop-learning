@@ -11,10 +11,12 @@ using std::vector;
 
 class UContainerVertical: public UContainer {
 public:
-    UContainerVertical(const vector<const IUI*>& _mIUIs, IUI* _mpFather = nullptr);
-    const vector<const IUI*>& getIUIs() const;
+    UContainerVertical(const vector<IUI*>& _mIUIs, IUI* _mpFather = nullptr);
+    virtual IUI** begin() override;
+    virtual IUI** end() override;
+    const vector<IUI*>& getIUIs() const;
 protected:
-    vector<const IUI*> mIUIs;
+    vector<IUI*> mIUIs;
 };
 
 

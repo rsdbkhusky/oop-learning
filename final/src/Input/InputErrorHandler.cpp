@@ -14,7 +14,7 @@ void InputErrorHandler::resetMessage() {
     mMessage = "";
 }
 
-IUI* InputErrorHandler::handleDisplayUIRoot(const IUI* displayUIRoot) {
+IUI* InputErrorHandler::handleDisplayUIRoot(IUI* displayUIRoot) {
     if (mMessage.size() == 0) {
         return new UContainerVertical({displayUIRoot});
     } else {

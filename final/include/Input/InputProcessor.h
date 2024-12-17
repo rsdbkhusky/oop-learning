@@ -63,16 +63,35 @@ public:
             }
             if (inputMessage.getParas().size() < 3) return {InputReturnValue::ERROR_PARASIZECONFLICT, inputMessage};
             return {InputReturnValue::SUCCESS, inputMessage};
+        } else if (oneOperand.find(words[0]) != end(oneOperand)) {
+            if (words.size() != 2) return {InputReturnValue::ERROR_PARASIZECONFLICT, inputMessage};
+            string currentNum;
+            for (char ch: words[1]) {
+                if (isdigit(ch)) {
+                    currentNum += ch;
+                } else if (!currentNum.empty()) {
+                    inputMessage.addPara(stoi(currentNum));
+                    currentNum.clear();
+                }
+            }
+            if (!currentNum.empty()) {
+                inputMessage.addPara(stoi(currentNum));
+            }
+            if (inputMessage.getParas().size() != 1) return {InputReturnValue::ERROR_PARASIZECONFLICT, inputMessage};
+            return {InputReturnValue::SUCCESS, inputMessage};
         }
         return {InputReturnValue::ERROR_NOSUCHNAME, inputMessage};
     }
 private:
     static set<string> zeroOperand;
+    static set<string> oneOperand;
     static set<string> xyzOperand;
     static set<string> xyzlistOperand;
 };
 
 set<string> InputProcessor::zeroOperand = {"help", "exit", "replay", "save"};
+
+set<string> InputProcessor::oneOperand = {"load"};
 
 set<string> InputProcessor::xyzOperand = {"set"};
 

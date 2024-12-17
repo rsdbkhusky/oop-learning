@@ -11,6 +11,8 @@ class Scene;
 
 class UI: public IUI {
 public:
+    UI(Scene* _mpScene = nullptr, IUI* _mpFather = nullptr);
+    virtual ~UI() override = default;
     virtual void receive(const InputMessage& inputMessage);
 protected:
     Scene* mpScene;

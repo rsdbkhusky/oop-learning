@@ -10,6 +10,8 @@
 class UContainer: public IUI {
 public:
     UContainer(IUI* _mpFather = nullptr);
+    virtual IUI** begin();
+    virtual IUI** end();
 };
 
 

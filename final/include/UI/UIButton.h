@@ -5,16 +5,17 @@
 #ifndef FINAL_UIBUTTON_H
 #define FINAL_UIBUTTON_H
 
-#include <string>
+#include <vector>
 #include "UI.h"
-using std::string;
+using std::vector;
 
 class UIButton: public UI {
 public:
-    UIButton(const string& _mText);
-    const string& getText() const;
+    UIButton(const vector<vector<char>>& _mText, Scene* _mpScene = nullptr, IUI* _mpFather = nullptr);
+    virtual ~UIButton() override = default;
+    const vector<vector<char>>& getText() const;
 protected:
-    string mText;
+    vector<vector<char>> mText;
 };
 
 

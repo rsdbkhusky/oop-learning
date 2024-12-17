@@ -4,8 +4,16 @@
 
 #include "../../include/UI/UContainerVertical.h"
 
-UContainerVertical::UContainerVertical(const vector<const IUI*>& _mIUIs, IUI* _mpFather): UContainer(_mpFather), mIUIs(_mIUIs) {}
+UContainerVertical::UContainerVertical(const vector<IUI*>& _mIUIs, IUI* _mpFather): UContainer(_mpFather), mIUIs(_mIUIs) {}
 
-const vector<const IUI*>& UContainerVertical::getIUIs() const {
+IUI** UContainerVertical::begin() {
+    return mIUIs.data();
+}
+
+IUI** UContainerVertical::end() {
+    return mIUIs.data() + mIUIs.size();
+}
+
+const vector<IUI*>& UContainerVertical::getIUIs() const {
     return mIUIs;
 }

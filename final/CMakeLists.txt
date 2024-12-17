@@ -14,8 +14,8 @@ add_executable(final test1.cpp
         include/Logic/LogicBlock.h
         src/Logic/LogicSudoku.cpp
         include/Logic/LogicSudoku.h
-        src/Application.cpp
-        include/Application.h
+        src/Application/Application.cpp
+        include/Application/Application.h
         src/Scene/Scene.cpp
         include/Scene/Scene.h
         src/Input/InputReceiver.cpp
@@ -74,4 +74,9 @@ add_executable(final test1.cpp
         include/Input/InputErrorHandler.h
         src/UI/UIText.cpp
         include/UI/UIText.h
+        src/UI/UIButtonSwitchScene.cpp
+        include/UI/UIButtonSwitchScene.h
+        test7.cpp
+        src/UI/UIArchiveList.cpp
+        include/UI/UIArchiveList.h
 )

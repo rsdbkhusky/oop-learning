@@ -18,9 +18,11 @@ class LogicSudoku {
 public:
     static LogicSudoku* createLogicSudoku(int _lenCell, double zeroRatio);
     static LogicSudoku* createLogicSudoku(const vector<vector<int>>& _nums);
+    LogicSudoku(const LogicSudoku& rhs);
     ~LogicSudoku();
     int getLenCell() const;
     const vector<vector<LogicCell*>>& getCells() const;
+    vector<vector<int>> getCells2VVI() const;
     LogicReturnValue setCellNum(int x, int y, int num);
     LogicReturnValue removeCellCandidates(int x, int y, const vector<int>& nums);
     LogicReturnValue resetCellCandidates(int x, int y);
