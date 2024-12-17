@@ -34,18 +34,6 @@ add_executable(final test1.cpp
         include/UI/UIButton.h
         src/UI/UISudoku.cpp
         include/UI/UISudoku.h
-        src/Scene/SceneMainMenu.cpp
-        include/Scene/SceneMainMenu.h
-        src/Scene/SceneSetting.cpp
-        include/Scene/SceneSetting.h
-        src/Scene/SceneChoseLevel.cpp
-        include/Scene/SceneChoseLevel.h
-        src/Scene/SceneGame.cpp
-        include/Scene/SceneGame.h
-        src/Scene/SceneSettingFromMainMenu.cpp
-        include/Scene/SceneSettingFromMainMenu.h
-        src/Scene/SceneSettingFromGame.cpp
-        include/Scene/SceneSettingFromGame.h
         src/Data/DataConfig.cpp
         include/Data/DataConfig.h
         src/Data/DataManagerSudoku.cpp
