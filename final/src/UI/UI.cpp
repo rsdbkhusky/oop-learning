@@ -3,3 +3,5 @@
 //
 
 #include "../../include/UI/UI.h"
+
+void UI::receive(const InputMessage& inputMessage) {}

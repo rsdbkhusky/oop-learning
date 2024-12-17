@@ -6,9 +6,14 @@
 #define FINAL_UI_H
 
 #include "IUI.h"
+class InputMessage;
+class Scene;
 
 class UI: public IUI {
-
+public:
+    virtual void receive(const InputMessage& inputMessage);
+protected:
+    Scene* mpScene;
 };
 
 

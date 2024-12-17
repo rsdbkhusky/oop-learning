@@ -8,11 +8,14 @@
 #include <algorithm>
 #include "../UI/IUI.h"
 #include "../UI/UI.h"
+#include "../UI/UIText.h"
 #include "../UI/UIButton.h"
 #include "../UI/UISudoku.h"
 #include "../UI/UContainer.h"
 #include "../UI/UContainerHorizontal.h"
 #include "../UI/UContainerVertical.h"
+#include "../Logic/LogicCell.h"
+#include "../Logic/LogicSudoku.h"
 using std::max;
 
 class OutputProcessor {
@@ -25,7 +28,11 @@ public:
         vector<vector<char>> result;
         int n = 0, m = 0;
         if (dynamic_cast<UI*>(&iui) != nullptr) {
-            if (dynamic_cast<UIButton*>(&iui) != nullptr) {
+            if (dynamic_cast<UIText*>(&iui) != nullptr) {
+                const string& text = dynamic_cast<UIText&>(iui).getText();
+                initvcc(result, n = 1, m = int(text.size()));
+                for (int i = 0; i < text.size(); ++i) result[0][i] = text[i];
+            } else if (dynamic_cast<UIButton*>(&iui) != nullptr) {
                 const string& text = dynamic_cast<UIButton&>(iui).getText();
                 initvcc(result, n = 3, m = int(text.size()) + 4);
                 for (int i = 0; i < n; ++i) result[i][0] = result[i][m - 1] = '*';
@@ -33,19 +40,34 @@ public:
                 for (int i = 0; i < text.size(); ++i) result[1][2 + i] = text[i];
             } else if (dynamic_cast<UISudoku*>(&iui) != nullptr) {
                 const LogicSudoku& ls = dynamic_cast<UISudoku&>(iui).getLogicSudoku();
-                initvcc(result, n = 1 + 4 * ls.getLenCell() * ls.getLenCell(), m = 1 + 4 * ls.getLenCell() * ls.getLenCell());
-                for (int i = 0; i < n; i += 4) {
+                int lencell = ls.getLenCell();
+                initvcc(result, n = 1 + (lencell + 1) * lencell * lencell, m = 1 + (lencell + 1) * lencell * lencell);
+                for (int i = 0; i < n; i += lencell + 1) {
                     for (int j = 0; j < m; ++j) {
                         result[i][j] = result[j][i] = '*';
                     }
                 }
-                for (int i = 0; i < n; i += 4 * ls.getLenCell()) {
+                for (int i = 0; i < n; i += (lencell + 1) * lencell) {
                     for (int j = 0; j < m; ++j) {
                         result[i][j] = result[j][i] = '#';
                     }
                 }
+                const vector<vector<LogicCell*>>& cells = ls.getCells();
+                for (int i = 0, x = 1; i < lencell * lencell; ++i, x += lencell + 1) {
+                    for (int j = 0, y = 1; j < lencell * lencell; ++j, y += lencell + 1) {
+                        if (cells[i][j]->getStatus() == LogicCellStatus::PENDING) {
+                            for (const auto& num: cells[i][j]->getCandidates()) {
+                                char ch = num < 10 ? num + '0' : num - 10 + 'A';
+                                result[x + (num - 1) / lencell][y + (num - 1) % lencell] = ch;
+                            }
+                        } else if (cells[i][j]->getStatus() == LogicCellStatus::CONFIRMED) {
+                            int num = cells[i][j]->getNum();
+                            char ch = num < 10 ? num + '0' : num - 10 + 'A';
+                            result[x + (lencell - 1) / 2][y + (lencell - 1) / 2] = ch;
+                        }
+                    }
+                }
             }
-            // TODO
         } else if (dynamic_cast<UContainer*>(&iui) != nullptr) {
             if (dynamic_cast<UContainerHorizontal*>(&iui) != nullptr) {
                 const vector<IUI*>& iuis = dynamic_cast<UContainerHorizontal&>(iui).getIUIs();

@@ -9,7 +9,7 @@
 
 class UContainer: public IUI {
 public:
-
+    UContainer(IUI* _mpFather = nullptr);
 };
 
 

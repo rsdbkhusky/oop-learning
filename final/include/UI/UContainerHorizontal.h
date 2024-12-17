@@ -11,10 +11,10 @@ using std::vector;
 
 class UContainerHorizontal: public UContainer {
 public:
-    UContainerHorizontal(const vector<IUI*>& _mIUIs);
-    const vector<IUI*>& getIUIs() const;
+    UContainerHorizontal(const vector<const IUI*>& _mIUIs, IUI* _mpFather = nullptr);
+    const vector<const IUI*>& getIUIs() const;
 protected:
-    vector<IUI*> mIUIs;
+    vector<const IUI*> mIUIs;
 };
 
 

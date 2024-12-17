@@ -8,7 +8,10 @@
 
 class IUI {
 public:
+    IUI(IUI* _mpFather = nullptr);
     virtual ~IUI() = default;
+protected:
+    IUI* mpFather;
 };
 
 

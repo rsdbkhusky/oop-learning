@@ -6,7 +6,7 @@
 #define FINAL_UISUDOKU_H
 
 #include "UI.h"
-#include "../Logic/LogicSudoku.h"
+class LogicSudoku;
 
 class UISudoku: public UI {
 public:

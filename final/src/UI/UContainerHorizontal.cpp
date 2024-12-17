@@ -4,8 +4,8 @@
 
 #include "../../include/UI/UContainerHorizontal.h"
 
-UContainerHorizontal::UContainerHorizontal(const vector<IUI*>& _mIUIs): mIUIs(_mIUIs) {}
+UContainerHorizontal::UContainerHorizontal(const vector<const IUI*>& _mIUIs, IUI* _mpFather): UContainer(_mpFather), mIUIs(_mIUIs) {}
 
-const vector<IUI*>& UContainerHorizontal::getIUIs() const {
+const vector<const IUI*>& UContainerHorizontal::getIUIs() const {
     return mIUIs;
 }

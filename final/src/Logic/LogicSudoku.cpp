@@ -199,6 +199,10 @@ int LogicSudoku::getLenCell() const {
     return (int)sqrt(mCells.size());
 }
 
+const vector<vector<LogicCell*>>& LogicSudoku::getCells() const {
+    return mCells;
+}
+
 LogicReturnValue LogicSudoku::setCellNum(int x, int y, int num) {
     LogicReturnValue result = mCells[x - 1][y - 1]->setNum(num);
     if (result != LogicReturnValue::SUCCESS) return result;

@@ -20,6 +20,7 @@ public:
     static LogicSudoku* createLogicSudoku(const vector<vector<int>>& _nums);
     ~LogicSudoku();
     int getLenCell() const;
+    const vector<vector<LogicCell*>>& getCells() const;
     LogicReturnValue setCellNum(int x, int y, int num);
     LogicReturnValue removeCellCandidates(int x, int y, const vector<int>& nums);
     LogicReturnValue resetCellCandidates(int x, int y);

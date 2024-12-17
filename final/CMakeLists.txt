@@ -70,4 +70,8 @@ add_executable(final test1.cpp
         src/UI/UContainerHorizontal.cpp
         include/UI/UContainerHorizontal.h
         test6.cpp
+        src/Input/InputErrorHandler.cpp
+        include/Input/InputErrorHandler.h
+        src/UI/UIText.cpp
+        include/UI/UIText.h
 )

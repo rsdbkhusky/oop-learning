@@ -3,3 +3,5 @@
 //
 
 #include "../../include/UI/UContainer.h"
+
+UContainer::UContainer(IUI* _mpFather): IUI(_mpFather) {}

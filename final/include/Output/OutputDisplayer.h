@@ -6,7 +6,7 @@
 #define FINAL_OUTPUTDISPLAYER_H
 
 #include "../Utils/Singleton.h"
-#include "../UI/IUI.h"
+class IUI;
 
 class OutputDisplayer: public Singleton<OutputDisplayer> {
     friend class Singleton<OutputDisplayer>;
