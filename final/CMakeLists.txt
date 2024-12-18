@@ -3,7 +3,7 @@ project(final)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(final test1.cpp
+add_executable(final src/test/test1.cpp
         src/Logic/LogicCell.cpp
         include/Logic/LogicCell.h
         src/Logic/LogicRow.cpp
@@ -41,10 +41,10 @@ add_executable(final test1.cpp
         src/Logic/LogicGroup.cpp
         include/Logic/LogicGroup.h
         include/Utils/Singleton.h
-        test2.cpp
-        test3.cpp
-        test4.cpp
-        test5.cpp
+        src/test/test2.cpp
+        src/test/test3.cpp
+        src/test/test4.cpp
+        src/test/test5.cpp
         src/UI/UContainer.cpp
         include/UI/UContainer.h
         src/UI/IUI.cpp
@@ -53,14 +53,14 @@ add_executable(final test1.cpp
         include/UI/UContainerVertical.h
         src/UI/UContainerHorizontal.cpp
         include/UI/UContainerHorizontal.h
-        test6.cpp
+        src/test/test6.cpp
         src/Input/InputErrorHandler.cpp
         include/Input/InputErrorHandler.h
         src/UI/UIText.cpp
         include/UI/UIText.h
         src/UI/UIButtonSwitchScene.cpp
         include/UI/UIButtonSwitchScene.h
-        test7.cpp
+        main.cpp
         src/UI/UIArchiveList.cpp
         include/UI/UIArchiveList.h
         src/UI/UIButtonSwitchSceneGenerator.cpp
