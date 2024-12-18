@@ -92,17 +92,14 @@ void Application::solveWatingList() {
     }
 }
 
-void Application::run() {
-    while (true) {
-        mScenes[mRunningSceneName]->autoUpdate();
-        solveWatingList();
-    }
+void Application::init() {
+    mScenes[mRunningSceneName]->autoUpdateAfter();
 }
 
-void Application::temp_run2() {
+void Application::run() {
     while (true) {
-        mScenes[mRunningSceneName]->temp_autoUpdate1();
+        mScenes[mRunningSceneName]->autoUpdateBefore();
         solveWatingList();
-        mScenes[mRunningSceneName]->temp_autoUpdate2();
+        mScenes[mRunningSceneName]->autoUpdateAfter();
     }
 }

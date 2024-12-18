@@ -14,6 +14,7 @@ public:
     virtual ~UIArchiveList() override = default;
     virtual Scene* createNewScene(const InputMessage &inputMessage) override;
     static vector<char> string2vc(const string& str);
+    static string vc2string(const vector<char>& vc);
     static vector<char> vcFillGivenLength(const vector<char>& vc, int length, char ch = ' ');
 };
 

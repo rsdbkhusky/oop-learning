@@ -43,8 +43,8 @@ public:
     OutputDisplayer* getOutputDisplayer();
     DataManager* getDataManager();
     void addWatingList(const tuple<AppWatingList, string, Scene*>& tp);
+    void init();
     void run();
-    void temp_run2();
 protected:
     void deleteScene(const string& sceneName);
     void createScene(const string& sceneName, Scene* scene);

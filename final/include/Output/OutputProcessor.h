@@ -43,21 +43,21 @@ public:
                 for (int i = 0; i < m; ++i) result[0][i] = result[n - 1][i] = '*';
                 for (int i = 0; i < text.size(); ++i) {
                     for (int j = 0; j < text[i].size(); ++j) {
-                        result[1 + i][(m - text[i].size()) / 2 + j] = text[i][j]; // TODO: 此处未测试
+                        result[1 + i][(m - text[i].size()) / 2 + j] = text[i][j];
                     }
                 }
             } else if (dynamic_cast<const UISudoku*>(&iui) != nullptr) {
                 const LogicSudoku& ls = dynamic_cast<const UISudoku&>(iui).getLogicSudoku();
                 int lencell = ls.getLenCell();
-                initvcc(result, n = 1 + (lencell + 1) * lencell * lencell, m = 1 + (lencell + 1) * lencell * lencell);
+                initvcc(result, 3 + (n = 1 + (lencell + 1) * lencell * lencell), 3 + (m = 1 + (lencell + 1) * lencell * lencell));
                 for (int i = 0; i < n; i += lencell + 1) {
                     for (int j = 0; j < m; ++j) {
-                        result[i][j] = result[j][i] = '*';
+                        result[i + 3][j + 3] = result[j + 3][i + 3] = '*';
                     }
                 }
                 for (int i = 0; i < n; i += (lencell + 1) * lencell) {
                     for (int j = 0; j < m; ++j) {
-                        result[i][j] = result[j][i] = '#';
+                        result[i + 3][j + 3] = result[j + 3][i + 3] = '#';
                     }
                 }
                 const vector<vector<LogicCell*>>& cells = ls.getCells();
@@ -66,14 +66,22 @@ public:
                         if (cells[i][j]->getStatus() == LogicCellStatus::PENDING) {
                             for (const auto& num: cells[i][j]->getCandidates()) {
                                 char ch = num < 10 ? num + '0' : num - 10 + 'A';
-                                result[x + (num - 1) / lencell][y + (num - 1) % lencell] = ch;
+                                result[x + (num - 1) / lencell + 3][y + (num - 1) % lencell + 3] = ch;
                             }
                         } else if (cells[i][j]->getStatus() == LogicCellStatus::CONFIRMED) {
                             int num = cells[i][j]->getNum();
                             char ch = num < 10 ? num + '0' : num - 10 + 'A';
-                            result[x + (lencell - 1) / 2][y + (lencell - 1) / 2] = ch;
+                            result[x + (lencell - 1) / 2 + 3][y + (lencell - 1) / 2 + 3] = ch;
                         }
                     }
+                }
+                for (int i = 0, x = lencell + 2; i < lencell * lencell; ++i, x += lencell + 1) {
+                    result[x][0] = 'R';
+                    result[x][1] = (i + 1) + '0';
+                }
+                for (int j = 0, y = lencell + 2; j < lencell * lencell; ++j, y += lencell + 1) {
+                    result[0][y] = 'C';
+                    result[1][y] = (j + 1) + '0';
                 }
             }
         } else if (dynamic_cast<const UContainer*>(&iui) != nullptr) {

@@ -10,6 +10,7 @@
 #include "../../include/UI/UIText.h"
 #include "../../include/UI/UIButtonSwitchScene.h"
 #include "../../include/UI/UIArchiveList.h"
+#include "../../include/UI/UContainerVertical.h"
 
 #include "../../include/Scene/SceGeneratorArchiveList.h"
 
@@ -18,9 +19,11 @@ Scene* SceGeneratorArchiveList::genScene(Application* application, SceGenerParaL
 
     UI* iuiG = new UIArchiveList("Game", true, true,
                                  sceneArchiveList);
+    UI* iuiG2 = new UIText("load <index>: Load the corresponding archive.", sceneArchiveList);
+    IUI* iuiG3 = new UContainerVertical({iuiG, iuiG2});
     map<string, UI*> uisArchiveList = {{"load", iuiG}};
     sceneArchiveList->setUIs(uisArchiveList);
-    sceneArchiveList->setUIRoot(iuiG);
+    sceneArchiveList->setUIRoot(iuiG3);
 
     return sceneArchiveList;
 }

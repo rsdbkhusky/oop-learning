@@ -89,7 +89,7 @@ private:
     static set<string> xyzlistOperand;
 };
 
-set<string> InputProcessor::zeroOperand = {"help", "exit", "replay", "save", "enter", "archive", "random", "setting"};
+set<string> InputProcessor::zeroOperand = {"help", "exit", "replay", "save", "enter", "archive", "random"/*, "setting"*/};
 
 set<string> InputProcessor::oneOperand = {"load"};
 

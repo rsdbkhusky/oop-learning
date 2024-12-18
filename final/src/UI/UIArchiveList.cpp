@@ -17,13 +17,22 @@
 using std::max;
 using std::to_string;
 
-vector<char> UIArchiveList::string2vc(const std::string& str) {
+vector<char> UIArchiveList::string2vc(const string& str) {
     vector<char> vc;
     vc.resize(str.size());
     for (int i = 0; i < str.size(); ++i) {
         vc[i] = str[i];
     }
     return vc;
+}
+
+string UIArchiveList::vc2string(const vector<char>& vc) {
+    string str;
+    str.resize(vc.size());
+    for (int i = 0; i < vc.size(); ++i) {
+        str[i] = vc[i];
+    }
+    return str;
 }
 
 vector<char> UIArchiveList::vcFillGivenLength(const vector<char>& vc, int length, char ch) {
@@ -68,20 +77,40 @@ Scene* UIArchiveList::createNewScene(const InputMessage& inputMessage) {
     auto file = begin(dataManagerSudoku->getFileList());
     while (--index) ++file;
     dataManagerSudoku->loadFile(*file);
-    LogicSudoku* logicSudoku = LogicSudoku::createLogicSudoku(dataManagerSudoku->getSudoku());
+    LogicSudoku* logicSudoku = LogicSudoku::createLogicSudoku(3, 0.5);
     UI* iuiA = new UISudoku(logicSudoku, scene);
     UI* iuiB = new UIText("Welcome to RsdbkHusky's Sudoku!", scene);
-    UI* iuiC = new UIButtonSwitchScene("StartMenu", true, false,
-                                       {UIArchiveList::string2vc("Exit")}, scene);
+    UI* iuiC = new UIButtonSwitchScene("MainMenu", true, false,
+                                       {UIArchiveList::string2vc("exit")}, scene);
     IUI* iuiD = new UContainerHorizontal({iuiB, iuiC});
+    UI* iuiDE1 = new UIText(UIArchiveList::vc2string(UIArchiveList::vcFillGivenLength
+                                                             (UIArchiveList::string2vc("exit: Exit the current game."), 60)));
+    UI* iuiDE2 = new UIText(UIArchiveList::vc2string(UIArchiveList::vcFillGivenLength
+                                                             (UIArchiveList::string2vc("replay: Replay the current game."), 60)));
+    UI* iuiDE3 = new UIText(UIArchiveList::vc2string(UIArchiveList::vcFillGivenLength
+                                                             (UIArchiveList::string2vc("save: Save the current game."), 60)));
+    UI* iuiDE4 = new UIText(UIArchiveList::vc2string(UIArchiveList::vcFillGivenLength
+                                                             (UIArchiveList::string2vc("set <rowindex>,<colindex>,<num>: Set num."), 60)));
+    UI* iuiDE5 = new UIText(UIArchiveList::vc2string(UIArchiveList::vcFillGivenLength
+                                                             (UIArchiveList::string2vc("rm <rowindex>,<colindex>,<num1>,<num2>...: Remove num."), 60)));
     IUI* iuiE = new UContainerVertical({iuiA, iuiD});
+    IUI* iuiF = new UContainerVertical({iuiDE1, iuiDE2, iuiDE3, iuiDE4, iuiDE5});
+    IUI* iuiG = new UContainerHorizontal({iuiE, iuiF});
     iuiD->setFather(iuiE);
     iuiC->setFather(iuiD);
     iuiB->setFather(iuiD);
     iuiA->setFather(iuiE);
-    map<string, UI*> uis1 = {{"replay", iuiA}, {"save", iuiA}, {"set", iuiA}, {"rm", iuiA},
-                             {"exit", iuiC}};
-    scene->setUIs(uis1);
-    scene->setUIRoot(iuiE);
+    iuiE->setFather(iuiG);
+    iuiDE1->setFather(iuiF);
+    iuiDE2->setFather(iuiF);
+    iuiDE3->setFather(iuiF);
+    iuiDE4->setFather(iuiF);
+    iuiDE5->setFather(iuiF);
+    iuiF->setFather(iuiG);
+    map<string, UI*> uisGame = {{"replay", iuiA}, {"save", iuiA}, {"set", iuiA}, {"rm", iuiA},
+                                {"exit",   iuiC}};
+    scene->setUIs(uisGame);
+    scene->setUIRoot(iuiG);
+
     return scene;
 }

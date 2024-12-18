@@ -19,7 +19,6 @@ class InputMessage;
 
 class Scene {
 public:
-//    Scene(Application* _mApplication, InputReceiver* _mInputReceiver, InputErrorHandler* _mInputErrorHandler, OutputDisplayer* _mOutputDisplayer);
     Scene(Application* _mpApplication, bool _mReDisplay = true);
     void setUIs(const map<string, UI*>& _mUIs);
     void setUIRoot(IUI* _mpUIRoot);
@@ -29,9 +28,8 @@ public:
     virtual ~Scene();
     Application& getApplication();
     void setReDisplay(bool reDisplay);
-    void autoUpdate();
-    void temp_autoUpdate1();
-    void temp_autoUpdate2();
+    void autoUpdateBefore();
+    void autoUpdateAfter();
 protected:
     static int durationOneUpdateInput;
     static string messageInputCantReceive;
@@ -41,9 +39,6 @@ protected:
     void solveInputMessage(const InputMessage& inputMessage);
     virtual void customUpdate();
     Application* mpApplication;
-//    InputReceiver* mInputReceiver;
-//    InputErrorHandler* mInputErrorHandler;
-//    OutputDisplayer* mOutputDisplayer; // 这三行预计要删掉
     map<string, UI*> mUIs;
     IUI* mpUIRoot;
     bool mReDisplay;

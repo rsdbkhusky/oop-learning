@@ -20,14 +20,10 @@ add_executable(final test1.cpp
         include/Scene/Scene.h
         src/Input/InputReceiver.cpp
         include/Input/InputReceiver.h
-        src/Input/InputReceiverConsole.cpp
-        include/Input/InputReceiverConsole.h
         src/Input/InputMessage.cpp
         include/Input/InputMessage.h
         src/Output/OutputDisplayer.cpp
         include/Output/OutputDisplayer.h
-        src/Output/OutputDisplayerConsole.cpp
-        include/Output/OutputDisplayerConsole.h
         src/UI/UI.cpp
         include/UI/UI.h
         src/UI/UIButton.cpp
@@ -73,13 +69,13 @@ add_executable(final test1.cpp
         include/Scene/SceGenerator.h
         src/Scene/SceGeneratorSudokuGame.cpp
         include/Scene/SceGeneratorSudokuGame.h
-        src/Input/InputReceiverConsole2.cpp
-        include/Input/InputReceiverConsole2.h
-        src/Output/OutputDisplayerConsole2.cpp
-        include/Output/OutputDisplayerConsole2.h
+        src/Input/InputReceiverConsole.cpp
+        include/Input/InputReceiverConsole.h
+        src/Output/OutputDisplayerConsole.cpp
+        include/Output/OutputDisplayerConsole.h
         src/Scene/SceGeneratorArchiveList.cpp
         include/Scene/SceGeneratorArchiveList.h
 )
 
-#set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
+set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
 #让链接器静态链接GCC和C++标准库

@@ -1,9 +1,10 @@
 //
-// Created by lenovo on 2024/11/7.
+// Created by lenovo on 2024/12/18.
 //
 
 #ifndef FINAL_INPUTRECEIVERCONSOLE_H
 #define FINAL_INPUTRECEIVERCONSOLE_H
+
 
 #include "../Utils/Singleton.h"
 #include "InputReceiver.h"
