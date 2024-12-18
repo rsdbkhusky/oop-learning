@@ -33,14 +33,18 @@ public:
     Application(InputReceiver* _mpInputReceiver, InputErrorHandler* _mpInputErrorHandler,
             OutputDisplayer* _mpOutputDisplayer, DataManager* _mpDataManager,
             const map<string, Scene*>& _mScenes, const string& _mRunningSceneName);
+    Application(const Application& rhs) = delete;
+    Application& operator=(const Application& rhs) = delete;
     virtual ~Application();
+    const map<string, Scene*>& getScenes() const;
     const string& getRunningSceneName() const;
     InputReceiver* getInputReceiver();
     InputErrorHandler* getInputErrorHandler();
     OutputDisplayer* getOutputDisplayer();
     DataManager* getDataManager();
     void addWatingList(const tuple<AppWatingList, string, Scene*>& tp);
-    int run();
+    void run();
+    void temp_run2();
 protected:
     void deleteScene(const string& sceneName);
     void createScene(const string& sceneName, Scene* scene);

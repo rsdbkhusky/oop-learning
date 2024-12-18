@@ -9,6 +9,8 @@
 class IUI {
 public:
     IUI(IUI* _mpFather = nullptr);
+    IUI(const IUI& rhs) = delete;
+    IUI& operator=(const IUI& rhs) = delete;
     virtual ~IUI() = default;
     void setFather(IUI* iui);
     IUI* getFather();

@@ -67,4 +67,19 @@ add_executable(final test1.cpp
         test7.cpp
         src/UI/UIArchiveList.cpp
         include/UI/UIArchiveList.h
+        src/UI/UIButtonSwitchSceneGenerator.cpp
+        include/UI/UIButtonSwitchSceneGenerator.h
+        src/Scene/SceGenerator.cpp
+        include/Scene/SceGenerator.h
+        src/Scene/SceGeneratorSudokuGame.cpp
+        include/Scene/SceGeneratorSudokuGame.h
+        src/Input/InputReceiverConsole2.cpp
+        include/Input/InputReceiverConsole2.h
+        src/Output/OutputDisplayerConsole2.cpp
+        include/Output/OutputDisplayerConsole2.h
+        src/Scene/SceGeneratorArchiveList.cpp
+        include/Scene/SceGeneratorArchiveList.h
 )
+
+#set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
+#让链接器静态链接GCC和C++标准库

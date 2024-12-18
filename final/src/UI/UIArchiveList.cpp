@@ -28,6 +28,7 @@ vector<char> UIArchiveList::string2vc(const std::string& str) {
 
 vector<char> UIArchiveList::vcFillGivenLength(const vector<char>& vc, int length, char ch) {
     vector<char> result = vc;
+    length -= vc.size();
     while (length--) {
         result.push_back(ch);
     }
@@ -55,7 +56,7 @@ UIArchiveList::UIArchiveList
     for (auto& file: fileList) {
         ++i;
         mText[index++] = UIArchiveList::vcFillGivenLength(UIArchiveList::string2vc(to_string(i) + ". " + file), m);
-        mText[index++] = UIArchiveList::vcFillGivenLength({}, m, '-');
+        if (i != fileCnt) mText[index++] = UIArchiveList::vcFillGivenLength({}, m, '-');
     }
 }
 
@@ -70,7 +71,7 @@ Scene* UIArchiveList::createNewScene(const InputMessage& inputMessage) {
     LogicSudoku* logicSudoku = LogicSudoku::createLogicSudoku(dataManagerSudoku->getSudoku());
     UI* iuiA = new UISudoku(logicSudoku, scene);
     UI* iuiB = new UIText("Welcome to RsdbkHusky's Sudoku!", scene);
-    UI* iuiC = new UIButtonSwitchScene("MainMenu", true, false,
+    UI* iuiC = new UIButtonSwitchScene("StartMenu", true, false,
                                        {UIArchiveList::string2vc("Exit")}, scene);
     IUI* iuiD = new UContainerHorizontal({iuiB, iuiC});
     IUI* iuiE = new UContainerVertical({iuiA, iuiD});

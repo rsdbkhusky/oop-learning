@@ -36,6 +36,10 @@ Application::~Application() {
     }
 }
 
+const map<string, Scene*>& Application::getScenes() const {
+    return mScenes;
+}
+
 const string& Application::getRunningSceneName() const {
     return mRunningSceneName;
 }
@@ -88,9 +92,17 @@ void Application::solveWatingList() {
     }
 }
 
-int Application::run() {
+void Application::run() {
     while (true) {
         mScenes[mRunningSceneName]->autoUpdate();
         solveWatingList();
+    }
+}
+
+void Application::temp_run2() {
+    while (true) {
+        mScenes[mRunningSceneName]->temp_autoUpdate1();
+        solveWatingList();
+        mScenes[mRunningSceneName]->temp_autoUpdate2();
     }
 }

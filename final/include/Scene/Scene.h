@@ -20,14 +20,18 @@ class InputMessage;
 class Scene {
 public:
 //    Scene(Application* _mApplication, InputReceiver* _mInputReceiver, InputErrorHandler* _mInputErrorHandler, OutputDisplayer* _mOutputDisplayer);
-    Scene(Application* _mpApplication, bool _mReDisplay = 1);
+    Scene(Application* _mpApplication, bool _mReDisplay = true);
     void setUIs(const map<string, UI*>& _mUIs);
     void setUIRoot(IUI* _mpUIRoot);
-    Scene(Application* _mpApplication, const map<string, UI*>& _mUIs, IUI* _mpUIRoot, bool _mReDisplay = 1);
+    Scene(Application* _mpApplication, const map<string, UI*>& _mUIs, IUI* _mpUIRoot, bool _mReDisplay = true);
+    Scene(const Scene& rhs) = delete;
+    Scene& operator=(const Scene& rhs) = delete;
     virtual ~Scene();
     Application& getApplication();
     void setReDisplay(bool reDisplay);
     void autoUpdate();
+    void temp_autoUpdate1();
+    void temp_autoUpdate2();
 protected:
     static int durationOneUpdateInput;
     static string messageInputCantReceive;

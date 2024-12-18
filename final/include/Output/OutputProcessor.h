@@ -22,7 +22,10 @@ class OutputProcessor {
 public:
     static void initvcc(vector<vector<char>>& vcc, int n, int m) {
         vcc.resize(n);
-        for (int i = 0; i < n; ++i) vcc[i].resize(m);
+        for (int i = 0; i < n; ++i) {
+            vcc[i].resize(m);
+            fill(vcc[i].begin(), vcc[i].end(), ' ');
+        }
     }
     static vector<vector<char>> iui2vvc(const IUI& iui) {
         vector<vector<char>> result;
@@ -40,7 +43,7 @@ public:
                 for (int i = 0; i < m; ++i) result[0][i] = result[n - 1][i] = '*';
                 for (int i = 0; i < text.size(); ++i) {
                     for (int j = 0; j < text[i].size(); ++j) {
-                        result[1 + i][(m - text[i].size()) + j] = text[i][j]; // TODO: 此处未测试
+                        result[1 + i][(m - text[i].size()) / 2 + j] = text[i][j]; // TODO: 此处未测试
                     }
                 }
             } else if (dynamic_cast<const UISudoku*>(&iui) != nullptr) {

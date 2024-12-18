@@ -54,7 +54,7 @@ Application& Scene::getApplication() {
     return *mpApplication;
 }
 
-int Scene::durationOneUpdateInput = 1000;
+int Scene::durationOneUpdateInput = 20;
 
 string Scene::messageInputCantReceive = "格式错误";
 
@@ -86,8 +86,8 @@ void Scene::solveOneInput(const std::string& input) {
 
 void Scene::solveInputMessage(const InputMessage& inputMessage) {
 //    cout << "solveInputMessage: " << inputMessage.getName() << ": ";
-    for (auto i: inputMessage.getParas()) cout << i << " ";
-    cout << endl;
+//    for (auto i: inputMessage.getParas()) cout << i << " ";
+//    cout << endl;
     UI& ui = *mUIs[inputMessage.getName()];
     ui.receive(inputMessage);
 }
@@ -95,18 +95,30 @@ void Scene::solveInputMessage(const InputMessage& inputMessage) {
 void Scene::customUpdate() {}
 
 void Scene::autoUpdate() {
-//    while (true) {
-//        cout << "############## autoUpdate ##############" << endl;
-        mpApplication->getInputReceiver()->loadAllInput();
-        solveOneUpdateInput();
-        customUpdate();
-        if (mReDisplay) {
-            mReDisplay = false;
-            IUI* handleDisplayUIRoot = mpApplication->getInputErrorHandler()->handleDisplayUIRoot(mpUIRoot);
-            mpApplication->getOutputDisplayer()->displayAllUI(*handleDisplayUIRoot);
-            delete handleDisplayUIRoot;
-        }
-        mpApplication->getInputErrorHandler()->resetMessage(); // TODO: InputErrorHandler未测试
-//        func2();
-//    }
+    mpApplication->getInputReceiver()->loadAllInput();
+    solveOneUpdateInput();
+    customUpdate();
+    if (mReDisplay) {
+        mReDisplay = false;
+        IUI* handleDisplayUIRoot = mpApplication->getInputErrorHandler()->handleDisplayUIRoot(mpUIRoot);
+        mpApplication->getOutputDisplayer()->displayAllUI(*handleDisplayUIRoot);
+        delete handleDisplayUIRoot;
+    }
+    mpApplication->getInputErrorHandler()->resetMessage(); // TODO: InputErrorHandler未测试
+}
+
+void Scene::temp_autoUpdate1() {
+    mpApplication->getInputReceiver()->loadAllInput();
+    solveOneUpdateInput();
+    customUpdate();
+}
+
+void Scene::temp_autoUpdate2() {
+    if (mReDisplay) {
+        mReDisplay = false;
+        IUI* handleDisplayUIRoot = mpApplication->getInputErrorHandler()->handleDisplayUIRoot(mpUIRoot);
+        mpApplication->getOutputDisplayer()->displayAllUI(*handleDisplayUIRoot);
+        delete handleDisplayUIRoot;
+    }
+    mpApplication->getInputErrorHandler()->resetMessage(); // TODO: InputErrorHandler未测试
 }
